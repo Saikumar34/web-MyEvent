@@ -1,0 +1,40 @@
+extends layout
+block content
+    nav(class="navbar navbar-inverse")
+        div(class="container-fluid")
+            div(class="navbar-header")
+                a(class="navbar-brand" href="/") MyEvent
+            ul(class="nav navbar-nav")
+                li(class="active") 
+                    a(href="/") Home
+                li 
+                    a(href="/about") About
+                li 
+                    a(href="/upcomingevents") Upcoming Events
+                if name
+                    li
+                        a(href="/registeredEvents") Registered Events 
+            ul(class="nav navbar-nav navbar-right")
+                if name
+                    li 
+                        a(href="/logout") 
+                            span(class="glyphicon glyphicon-log-out") Logout
+                    li 
+                        a(href="#") 
+                            span(class="glyphicon glyphicon-user") #{ name }
+                else
+                    li 
+                        a(href="/signup") 
+                            span(class="glyphicon glyphicon-user") SignUp
+                    li 
+                        a(href="/login") 
+                            span(class="glyphicon glyphicon-log-in") Login
+
+    div(id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2000")
+        div(class="carousel-inner")
+            div(class="item active")
+                img(src="./images/first.jpg" style="width:1500px;height:660px")
+            div(class="item")
+                img(src="./images/second.jpg" style="width:1500px;height:660px")
+            div(class="item")
+                img(src="./images/third.jpg" style="width:1500px;height:660px")

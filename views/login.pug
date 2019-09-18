@@ -1,0 +1,30 @@
+extends layout
+block content
+    nav(class="navbar navbar-inverse")
+        div(class="container-fluid")
+            div(class="navbar-header")
+                a(class="navbar-brand" href="/") MyEvent
+            ul(class="nav navbar-nav")
+                li
+                    a(href="/") Home
+                li 
+                    a(href="/about") About
+                li 
+                    a(href="/upcomingevents") Upcoming Events
+            ul(class="nav navbar-nav navbar-right")
+                li 
+                    a(href="/signup") 
+                        span(class="glyphicon glyphicon-user") SignUp
+                li(class="active") 
+                    a(href="/login") 
+                        span(class="glyphicon glyphicon-log-in") Login
+    div.container
+        h2 Login Form
+        form(method = "POST" action="/login")
+            div(class="form-group")
+                label(for="email") Email:
+                input(type="email" class="form-control short" id="email" placeholder="Enter email" name="email")
+            div(class="form-group")
+                label(for="pwd") Password:
+                input(type="password" class="form-control short" id="pwd" placeholder="Enter password" name="pwd")
+            button(type="submit" class="btn btn-default") Login

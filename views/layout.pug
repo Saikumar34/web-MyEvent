@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js")
+  body
+      div(class="container_fluid" style="background-color:white")          
+        img(src="/images/logo.png" class="img-rounded" width="304" height="136")
+        img(src="/images/logo2.png" class="img-rounded" width="304" height="136" style="float:right") 
+        .container
+          if(flash && flash.login && flash.login.length >0)
+            p.alert.alert-danger #{flash.login}
+          else if(flash && flash.signup && flash.signup.length >0)
+            p.alert.alert-danger #{flash.signup}
+      block content

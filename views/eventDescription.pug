@@ -1,0 +1,32 @@
+extends layout
+block content
+    nav(class="navbar navbar-inverse")
+        div(class="container-fluid")
+            div(class="navbar-header")
+                a(class="navbar-brand" href="/") MyEvent
+            ul(class="nav navbar-nav")
+                li
+                    a(href="/") Home
+                li 
+                    a(href="/about") About
+                li 
+                    a(href="/upcomingevents") Upcoming Events
+                li(class="active")
+                    a(href="/registeredEvents") Registered Events 
+            ul(class="nav navbar-nav navbar-right")
+                li 
+                    a(href="/logout") 
+                        span(class="glyphicon glyphicon-log-out") Logout
+                li 
+                    a(href="/eventDescription") 
+                        span(class="glyphicon glyphicon-user") #{ name }
+    -var imgname = event[0].imgname;
+    .container
+        h1  #{ event[0].name }
+        div.row
+            .col-md-4
+                div.thumbnail
+                    img(src='/images/' + imgname style='height:230px')
+                    div.caption
+                        p #{ event[0].caption }
+        p   #{ event[0].description }

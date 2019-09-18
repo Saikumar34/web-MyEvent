@@ -1,0 +1,54 @@
+extends layout
+block content
+    nav(class="navbar navbar-inverse")
+        div(class="container-fluid")
+            div(class="navbar-header")
+                a(class="navbar-brand" href="/") MyEvent
+            ul(class="nav navbar-nav")
+                li
+                    a(href="/") Home
+                li 
+                    a(href="/about") About
+                li(class="active") 
+                    a(href="/upcomingevents") Upcoming Events
+                if name
+                    li
+                        a(href="/registeredEvents") Registered Events 
+            ul(class="nav navbar-nav navbar-right")
+                if name
+                    li 
+                        a(href="/logout") 
+                            span(class="glyphicon glyphicon-log-out") Logout
+                    li 
+                        a(href="/upcomingevents") 
+                            span(class="glyphicon glyphicon-user") #{ name }
+                else
+                    li 
+                        a(href="/signup") 
+                            span(class="glyphicon glyphicon-user") SignUp
+                    li 
+                        a(href="/login") 
+                            span(class="glyphicon glyphicon-log-in") Login
+    -var len = events.length;
+    -if(len%3==0)
+        -var rows = len/3;
+    -else
+        -var rows=  parseInt((len/3))+1;
+    div.container
+        -for(var i=0;i<rows;i++)
+            div.row
+                -for(var j=0;j<3 && i*3+j<len;j++)
+                    -var imgname = events[i*3+j].imgname;
+                    -console.log(imgname);
+                    -var caption = events[i*3+j].caption;
+                    .col-md-4
+                        form(method="POST",action="/register/" + events[i*3+j].code)
+                            button.btn.btn-primary
+                                div.thumbnail
+                                    img(src='./images/' + imgname style='height:230px')
+                                    div.caption
+                                        p #{ caption }
+
+    div.container
+        if !name
+            h3  Please login to register for the events
